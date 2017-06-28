@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body,p{margin: 0;padding: 0;}
+			#phone{height: 400px;width: 200px;margin: 50px auto;border: 5px solid #000; border-radius: 10%;padding: 20px;position: relative;}
+			#content{height: 300px;width: 200px;border: 2px solid darkred;overflow: auto;}
+			#content p{max-width: 150px;line-height: 30px;}
+			.person1{float: left;margin-top: 10px;vertical-align: top;}
+			.person1 img{float: left;}
+			.person1 p {float: left;background: #ccc;border: 1px solid #ccc; border-radius: 5%;}
+			.person2{float: right;margin-top: 10px;vertical-align: top;}
+			.person2 img{float: right;}
+			.person2 p{float: right;background: green;border: 1px solid green; border-radius: 5%;}
+			#head,#info,#send{height: 30px;position: absolute;}
+			#head{bottom: 52px;}
+			img{width: 30px;left: 20px;}
+			#info{width: 100px;left: 65px;bottom: 50px;border-radius: 5px;border: 0;outline: none;border: 1px solid darkcyan;}
+			#send{width: 46px;right: 20px;bottom: 52px;}
+		</style>
+		<script>
+			window.onload = function(){
+				var oCon = document.getElementById('content');
+				var oHead = document.getElementById('head');
+				var oInfo = document.getElementById('info');
+				var oSend = document.getElementById('send');
+				var oBool = true;
+				oHead.onclick = function(){
+					if(oBool == true){
+						oHead.src = 'img/2.jpg'
+						oBool = false;
+					}
+					else{
+						oHead.src = 'img/1.jpg'
+						oBool = true;
+					}
+				}	
+				oSend.onclick = function(){
+					if(oInfo.value == ''){
+						alert('请输入信息！！');
+					}
+					else{
+						if(oBool == true){
+							oCon.innerHTML = '<div class="person1">'+'<img src="img/1.jpg">'+'<p>'+oInfo.value+'</p>'+'</div>' + oCon.innerHTML;
+							oInfo.value = '';
+						}
+						else{
+							oCon.innerHTML = '<div class="person2">'+'<img src="img/2.jpg">'+'<p>'+oInfo.value+'</p>'+'</div>' + oCon.innerHTML;
+							oInfo.value = '';
+						}
+					}
+				}
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div id="phone">
+			<div id="content">
+			</div>
+			<img src="img/1.jpg" id="head"/>
+			<input type="text" id="info" />
+			<input type="button" id="send" value="Send"/>
+		</div>
+	</body>
+</html>

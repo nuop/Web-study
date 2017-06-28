@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>带略缩图的图片轮换</title>
+		<style>
+			body,h3,img,ul,li{margin: 0;padding: 0;}
+			li{list-style: none;}
+			.wrap{width: 800px;height: 500px;margin: 50px auto;background:#228B22}
+			h3{height: 50px;font: 30px/50px "微软雅黑";}
+			#imgBox{position: relative;width: 400px;height: 400px;margin: 0 auto;background: #fff;}
+			img{width: 400px;height: 400px;}
+			#left,#right{position: absolute;top: 180px;height: 40px;width: 40px;background: #FF6600;border-radius: 50%;opacity: 0.6;}
+			#left{left: 10px;}
+			#left:hover,#right:hover{opacity: 1;}
+			#right{right: 10px;}
+			#left span,#right span{font: 20px/40px "微软雅黑";color: #fff;font-weight: bold;text-align: center;height: 40px;width: 40px;display: block;}
+			ul{width: 104px;margin: 16px auto;}
+			li{height: 16px;width: 16px;background: #ccc;float: left;border-radius: 50%;margin-left: 10px;position: relative;}
+			.active{background: #CDB567;}
+			li img{position: absolute;height: 50px;width: 50px;top: -56px;left: -18px;display: none;}
+		</style>
+		<script>
+			window.onload = function(){
+				var oPic = document.getElementById('pic');
+				var oLeft = document.getElementById('left');
+				var oRight = document.getElementById('right');
+				var aLi = document.getElementsByTagName('li');
+				var aImg = ['img/1.jpg','img/2.jpg','img/3.jpg','img/4.jpg']
+				var num = 0;
+				//初始化
+				oPic.src = aImg[num];
+				aLi[0].className = 'active';
+				
+				//点击事件
+				oLeft.onclick = function(){
+					num--;
+					if(num==-1){
+						num=3;
+					}					
+					oPic.src = aImg[num];
+					for(var i=0;i<aLi.length;i++){
+						aLi[i].className = '';
+					}
+					aLi[num].className = 'active';
+				}
+				oRight.onclick = function(){
+					num++;
+					if(num==4){
+						num=0;
+					}					
+					oPic.src = aImg[num];
+					for(var i=0;i<aLi.length;i++){
+						aLi[i].className = '';
+					}
+					aLi[num].className = 'active';
+				}
+				//列表点击事件
+				for(var i=0;i<aLi.length;i++){
+					aLi[i].index = i;
+					aLi[i].onclick = function(){
+						oPic.src = aImg[this.index];
+						for(var i=0;i<aLi.length;i++){
+							aLi[i].className = '';
+						}
+						aLi[this.index].className = 'active';
+					}
+					aLi[i].onmouseover = function(){
+						this.getElementsByTagName('img')[0].style.display = 'block';
+						this.getElementsByTagName('img')[0].src = aImg[this.index];
+					}
+					aLi[i].onmouseleave = function(){
+						this.getElementsByTagName('img')[0].style.display = 'none';
+					}
+				}
+				
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div class="wrap">
+			<h3>带略缩图的图片轮换</h3>
+			<div id="imgBox">
+				<img src="" id="pic"/>
+				<div id="left"><span><</span></div>
+				<div id="right"><span>></span></div>
+			</div>			
+			<ul>
+				<li><img src="img/1.jpg"/></li>							
+				<li><img src=""/></li>							
+				<li><img src=""/></li>							
+				<li><img src=""/></li>													
+			</ul>
+		</div>
+	</body>
+</html>

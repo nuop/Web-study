@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>自动生成100个li</title>
+		<style>
+			body{position: relative;}
+			li{list-style: none;height: 50px;width: 50px;font: 20px/50px "微软雅黑";text-align: center;position: absolute;top: 60px;left: 10px;background: #ccc;}
+		</style>
+		<script>
+		// 0 4 8 12    1 5 9 13    2 6 10 14   3 7 11 15
+			window.onload = function(){
+				var oBtn = document.getElementById('btn1');
+				var oUl = document.getElementById('ul1');
+				var aLi = oUl.getElementsByTagName('li');
+				var aColor = ['red','yellow','blue','green'];
+				oBtn.onclick = function(){
+					oUl.innerHTML= '';
+					for(var i=0; i<100;i++){
+						oUl.innerHTML += '<li>'+i+'</li>';						
+						aLi[i].style.background = aColor[i%4];
+					}
+					for(i=0;i<10;i++){
+						for(j=0;j<10;j++){
+							aLi[i*10+j].style.left = j*60 +'px';
+							aLi[i*10+j].style.top = (i+1)*60 +'px';
+						}
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" value="生成" id="btn1" />
+		<ul id="ul1">
+			
+		</ul>
+	</body>
+</html>

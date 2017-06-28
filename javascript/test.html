@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+		var timer =null;
+			for(i=0;i<10;i++){
+				clearInterval(timer);
+				(function(e){
+					timer = setInterval(function(){
+						console.log(e);
+					},1000)
+				})(i)
+			}
+		</script>
+	</head>
+	
+	<body>
+		<input type="text" name="user" id="user" value="" />
+		<div id="box" ccc="333"></div>
+	</body>
+</html>

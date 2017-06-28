@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		strong{float: left;}
+			b{background: url(img/7-1.png);height: 19px;width: 19px;display: block;float: left;}
+		</style>
+		<script>
+			window.onload = function(){
+				var aB = document.getElementsByTagName('b');
+				var aSpan = document.getElementsByTagName('span');
+				var aScore = ['1分','2分','3分','4分','5分'];
+				var jug = true;
+				for(var i=0;i<aB.length;i++){
+					aB[i].index = i;
+					aB[i].onmouseenter = function(){
+						re();
+						aSpan[0].innerHTML = aScore[this.index];
+						changeImg(this.index);
+					}
+					aB[i].onclick = function(){
+						changeImg(this.index);
+						jug = false;
+					}					
+					aB[i].onmouseleave = function(){
+						if(jug){
+							aSpan[0].innerHTML = '';
+							re();
+						}
+						else{
+							jug = true;
+						}
+					}									
+				}				
+				function changeImg(a){
+					if(a<2){
+						for(var i=0;i<=a;i++){
+							aB[i].style.background = 'url(img/7-2.png)';
+						}
+					}
+					else{
+						for(var i=0;i<=a;i++){
+							aB[i].style.background = 'url(img/7-3.png)';
+						}
+					}
+				}
+				function re(){
+					for(var i=0;i<aB.length;i++){
+								aB[i].style.background = 'url(img/7-1.png)';
+							}	
+				}
+			}
+		</script>
+	</head>
+	<body>		
+		<div class="box7-1">	
+			<strong>评价打分：</strong>	
+			<b></b>
+			<b></b>
+			<b></b>
+			<b></b>
+			<b></b>
+			<span></span>
+		</div>
+	</body>
+</html>

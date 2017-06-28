@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<img src="img/1.jpg" id="pic" width="600px" height="400px" />
+		<script>
+		    var aPic = ['img/1.jpg','img/2.jpg','img/3.jpg','img/4.jpg']
+			var oPic = document.getElementById('pic');
+			var i = 0;
+			oPic.timer = setInterval(function(){				
+				i++;
+				if(i==4){
+					i=0;
+				}
+				oPic.src = aPic[i];
+			},1000)
+		</script>
+	</body>
+</html>

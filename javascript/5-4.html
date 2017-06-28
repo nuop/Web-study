@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body,img,li,ul{margin: 0;padding:0;}
+			li{list-style: none;}
+			#demo{height: 400px;width: 900px;background: #ccc;overflow: hidden;padding: 10px;}
+			#tab{width: 200px;background: #B1753F;float: left;}
+			#tab li{height: 98px;border: 1px solid #2C2345;color: #231826;font: 26px/96px "微软雅黑";text-align: center;}
+			#picList{
+				height: 400px;
+				width: 700px;
+				background: #ADFF2F;
+				float: left;
+			}
+			#picList div{position: relative;height: 400px;display: none;}
+			#picList img{height: 400px;width: 700px; background-repeat:repeat-x;}
+			#picList ul {position: absolute;height: 30px;bottom: 0;}
+			#picList ul li {float: left;text-align: center;color: #fff;background: #000;height: 30px;font: 18px/30px "微软雅黑";opacity: 0.7;}
+			.active{background: #fff;}
+			.active1{background: #009900!important;}
+			
+			
+		</style>
+		<script>
+			window.onload = function(){
+				var oTab = document.getElementById('tab');
+				var aLi = oTab.getElementsByTagName('li');
+				var oPic = document.getElementById('picList');
+				var aDiv= oPic.getElementsByTagName('div');
+				var arr = [
+				['img/1.jpg','img/2.jpg','img/3.jpg','img/4.jpg'],
+				['img/5.jpg','img/6.jpg','img/7.jpg'],
+				['img/8.jpg','img/9.jpg','img/10.jpg','img/11.jpg','img/12.jpg'],
+				['img/13.jpg','img/14.jpg','img/15.jpg','img/16.jpg']
+				]
+				aDiv[0].style.display = 'block';
+				for(var i=0;i<aLi.length;i++){
+					aLi[i].index = i;
+					aLi[i].onclick = function(){
+						for(var i=0;i<aLi.length;i++){
+							aLi[i].className = '';
+							aDiv[i].style.display = 'none';
+						}
+						this.className = 'active';
+						aDiv[this.index].style.display = 'block';
+					}
+				}
+				for(var i=0;i<aDiv.length;i++){
+					var oUl = aDiv[i].getElementsByTagName('ul')[0];
+					var oImg = aDiv[i].getElementsByTagName('img')[0];
+					Tab(oUl,oImg,i);
+				}
+				function Tab(ul,pict,num){
+					var aLi2 = ul.getElementsByTagName('li');
+					for(var i=0;i<aLi2.length;i++){
+						aLi2[i].index = i;
+						aLi2[i].style.width = 700/aLi2.length +'px';
+						aLi2[i].onmouseenter = function(){
+							for(i=0;i<aLi2.length;i++){
+								aLi2[i].className = '';
+							}
+							this.className = 'active1';
+							pict.src = arr[num][this.index];
+						}
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="demo">
+			<ul id="tab">
+				<li class="active">Tab1</li>
+				<li>Tab2</li>
+				<li>Tab3</li>
+				<li>Tab4</li>
+			</ul>
+			<div id="picList">	
+				<div>
+					<img src="img/1.jpg" />
+					<ul>					
+						<li class="active1">1234</li>
+						<li>56773</li>
+						<li>456</li>
+						<li>245673</li>
+					</ul>
+				</div>
+				
+				<div>
+					<img src='img/5.jpg' />
+					<ul>
+					
+					<li class="active1">dsaf</li>
+					<li>wtatag</li>
+					<li>gseyeyshss</li>
+				</ul>
+				</div>
+				
+
+				<div>
+					<img src='img/8.jpg' />
+					<ul>
+					
+					<li class="active1">锄禾日当午</li>
+					<li>汗滴禾下土</li>
+					<li>谁知盘中餐</li>
+					<li>粒粒皆辛苦</li>
+					<li>啦啦啦</li>
+				</ul>
+				</div>
+				
+
+				<div>
+					<img src='img/13.jpg' />
+					<ul> 	
+						<li class="active1">全笑死我</li>
+						<li>dsdsdsd</li>
+						<li>243242342</li>
+						<li>费大幅度发</li>
+					</ul>
+				</div>
+				
+			</div>
+		</div>
+	</body>
+</html>

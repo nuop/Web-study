@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		body,input,ul,li,span{margin: 0;padding: 0;}
+			body{font: 16px/30px "微软雅黑";}
+			ul{margin-top: 50px;}
+			li{list-style: none;margin-left: 40px;}
+			img{height: 16px;width: 16px;}
+			input{display: none;}
+			#text{height: 30px;font: 16px/30px "微软雅黑";vertical-align:middle}
+			#btn1,#btn2{height: 30px;width: 40px;background: #fff;color: #228B22;border: 0;vertical-align:middle}
+			#btn1:hover,#btn2:hover{background: #228B22;color: #fff;}
+		</style>
+		<script>
+			window.onload = function(){
+				var oUl = document.getElementById('list');
+				var aLi = oUl.getElementsByTagName('li');
+				for(i=0;i<aLi.length;i++){
+					f1(aLi[i]);
+				}
+				function f1(oLi){
+					var oSpan = oLi.getElementsByTagName('span')[0];
+					var oImg = oLi.getElementsByTagName('img')[0];
+					var aInput = oLi.getElementsByTagName('input');
+					oImg.onclick = function(){
+						oSpan.style.display = 'none'
+						oImg.style.display = 'none';
+						aInput[0].style.display = aInput[1].style.display = aInput[2].style.display = 'inline-block'
+						aInput[0].value = oSpan.innerHTML;
+					}
+
+					aInput[1].onclick = function(){
+						oSpan.style.display = 'inline-block';
+						oImg.style.display = 'inline-block';
+						aInput[0].style.display = aInput[1].style.display = aInput[2].style.display = 'none';
+						oSpan.innerHTML = aInput[0].value;
+					}
+					aInput[2].onclick = function(){
+						oSpan.style.display = 'inline-block';
+						oImg.style.display = 'inline-block';
+						aInput[0].style.display = aInput[1].style.display = aInput[2].style.display = 'none';
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<ul id="list">
+			<li>
+				<span>妙味课堂     </span><img src="img/1.jpg" />
+				<input type="text" id="text"  />
+				<input type="button" value="保存" id="btn1" />
+				<input type="button" value="取消" id="btn2" />
+			</li>
+			<li>
+				<span>滴滴答答     </span><img src="img/1.jpg" />
+				<input type="text" id="text"  />
+				<input type="button" value="保存" id="btn1" />
+				<input type="button" value="取消" id="btn2" />
+			</li>
+			<li>
+				<span>你就是的不是单身是滴滴滴滴的顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶     </span><img src="img/1.jpg" />
+				<input type="text" id="text"  />
+				<input type="button" value="保存" id="btn1" />
+				<input type="button" value="取消" id="btn2" />
+			</li>
+		</ul>
+	</body>
+</html>

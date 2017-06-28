@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>列表展示</title>
+		<style>
+		body,h3,span,ul,li,p{margin: 0;padding: 0;}
+			.clearfloat{zoom:1;}
+			.clearfloat:after{
+				content: '';
+				display: block;
+				clear: both;
+			}
+			a{text-decoration: none;}
+			li{list-style: none;}
+			#box{height: 400px;width: 300px;background: #999999;margin: 100px auto;}
+			h3{width: 180px;font: 20px/40px "微软雅黑";text-indent: 20px;float: left;border-bottom: 1px solid #443E58;}
+			#list{margin-left: 180px;}
+			#list li{float: left;border: 1px solid #443E58;padding: 2px;margin-top: 17px;}
+			.active{border-bottom: 1px solid #fff !important;background: #fff;}
+			#listInfo ul{display: none;}
+			.disp{display: block !important;}
+			#listInfo li span{background: #B20E00;width: 26px;display: inline-block;text-align: center;
+			height: 16px;font-size: 12px;line-height: 16px;font-weight: bold;position: absolute;
+			left: 5px;top: 7px;}
+			#listInfo li{border-bottom: 1px dashed #fff;line-height: 30px;font-size: 14px;position: relative;}
+			#listInfo li div{height: 50px;display: none;padding-left:40px;background: #fff;}
+			#listInfo li div a{float: left;margin-left: 20px;height: 20px;width: 40px;background: #C17E49;line-height: 20px;text-align: center;margin-top: 20px;}
+			#listInfo li  a{color: #fff;font-size: 14px;margin-left: 40px;}
+			#listInfo li img{height: 40px;width: 40px;float: left;margin-top: 5px;}
+			#listInfo li p{float: left;width: 150px;line-height: 25px;margin-left: 4px;}
+
+		</style>
+		<script>
+			window.onload = function(){
+				var oUl1 = document.getElementById('list');
+				var aLi1 = oUl1.getElementsByTagName('li');
+				var oInfo = document.getElementById('listInfo');
+				var aUl = oInfo.getElementsByTagName('ul');
+				for(i=0;i<aLi1.length;i++){
+					aLi1[i].index = i;				
+					aLi1[i].onclick = function(){
+						for(var i=0;i<aLi1.length;i++){
+							aLi1[i].className = '';
+							aUl[i].className = '';
+						}		
+						aLi1[this.index].className = 'active';
+						aUl[this.index].className = 'disp';
+					}
+				}
+				for(var i=0;i<aUl.length;i++){
+					change(aUl[i]);
+				}
+				function change(obj){
+					var aLi = obj.getElementsByTagName('li');
+					for(var i=0;i<aLi.length;i++){
+						aLi[i].onmouseenter = function(){
+							this.getElementsByTagName('a')[0].style.display = 'none';
+							this.getElementsByTagName('div')[0].style.display = 'block';			
+						}
+						aLi[i].onmouseleave = function(){
+							this.getElementsByTagName('a')[0].style.display = 'block';
+							this.getElementsByTagName('div')[0].style.display = 'none';			
+						}
+					}	
+					
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<div id="top" class="clearfloat">
+				<h3>观看排行榜</h3>
+				<ul id="list">
+					<li class="active">每日</li>
+					<li>每周</li>
+					<li>全部</li>
+				</ul>
+			</div>
+			<div id="listInfo">
+				<ul  class="disp">
+					<li>
+						<span>1</span>
+						<a href="#">人社部新思路:用公积金补充养老保险</a>
+						<div>
+							<img src="img/1.jpg" />
+							<p>人社部新思路:用公积金补充养老保险</p>
+							<a href="#">播放</a>
+						</div>
+						
+					</li>
+					<li>
+						<span>2</span>
+						<a href="#">第22金!刘虹最后30米反超惊vvvvv</a>
+						<div>
+							<img src="img/1.jpg" />
+							<p>第22金!刘虹最后30米反超惊vvvvv</p>
+							<a href="#">播放</a>
+						</div>
+						
+					</li>
+					<li>
+						<span>3</span>
+						<a href="#">第22金!刘虹最后30米反超惊qqqqq</a>
+						<div>
+							<img src="img/1.jpg" />
+							<p>第22金!刘虹最后30米反超惊qqqqq</p>
+							<a href="#">播放</a>
+						</div>
+						
+					</li>
+					<li>
+						<span>4</span>
+						<a href="#">奥运会首赢林丹 李宗伟释放跪ddddd</a>
+						<div>
+							<img src="img/1.jpg" />
+							<p>奥运会首赢林丹 李宗伟释放跪ddddd</p>
+							<a href="#">播放</a>
+						</div>
+						
+					</li>
+					<li>
+						<span>5</span>
+						<a href="#">湖南两官员嫖宿少女 涉11名未qqqqq</a>
+						<div>
+							<img src="img/1.jpg" />
+							<p>湖南两官员嫖宿少女 涉11名未qqqqq</p>
+							<a href="#">播放</a>
+						</div>
+						
+					</li>
+					
+				</ul>
+				<ul>
+					<li>
+						<span>1</span>
+						<a href="#">人社部新思路:用公积金补充养老保险</a>
+						<div>
+							<img src="img/2.jpg" />
+							<p>人社部新思路:用公积金补充养老保险</p>
+							<a href="#">播放</a>
+						</div>
+						
+					</li>
+					<li>
+						<span>2</span>
+						<a href="#">第22金!刘虹最后30米反超惊vvvvv</a>
+						<div>
+							<img src="img/2.jpg" />
+							<p>第22金!刘虹最后30米反超惊vvvvv</p>
+							<a href="#">播放</a>
+						</div>
+						
+					</li>
+					<li>
+						<span>3</span>
+						<a href="#">第22金!刘虹最后30米反超惊qqqqq</a>
+						<div>
+							<img src="img/2.jpg" />
+							<p>第22金!刘虹最后30米反超惊qqqqq</p>
+							<a href="#">播放</a>
+						</div>
+						
+					</li>
+					<li>
+						<span>4</span>
+						<a href="#">奥运会首赢林丹 李宗伟释放跪ddddd</a>
+						<div>
+							<img src="img/2.jpg" />
+							<p>奥运会首赢林丹 李宗伟释放跪ddddd</p>
+							<a href="#">播放</a>
+						</div>
+						
+					</li>
+					<li>
+						<span>5</span>
+						<a href="#">湖南两官员嫖宿少女 涉11名未qqqqq</a>
+						<div>
+							<img src="img/2.jpg" />
+							<p>湖南两官员嫖宿少女 涉11名未qqqqq</p>
+							<a href="#">播放</a>
+						</div>
+						
+					</li>
+					
+				</ul>
+				<ul>
+					<li>
+						<span>1</span>
+						<a href="#">人社部新思路:用公积金补充养老保险</a>
+						<div>
+							<img src="img/3.jpg" />
+							<p>人社部新思路:用公积金补充养老保险</p>
+							<a href="#">播放</a>
+						</div>
+						
+					</li>
+					<li>
+						<span>2</span>
+						<a href="#">第22金!刘虹最后30米反超惊vvvvv</a>
+						<div>
+							<img src="img/3.jpg" />
+							<p>第22金!刘虹最后30米反超惊vvvvv</p>
+							<a href="#">播放</a>
+						</div>
+						
+					</li>
+					<li>
+						<span>3</span>
+						<a href="#">第22金!刘虹最后30米反超惊qqqqq</a>
+						<div>
+							<img src="img/3.jpg" />
+							<p>第22金!刘虹最后30米反超惊qqqqq</p>
+							<a href="#">播放</a>
+						</div>
+						
+					</li>
+					<li>
+						<span>4</span>
+						<a href="#">奥运会首赢林丹 李宗伟释放跪ddddd</a>
+						<div>
+							<img src="img/3.jpg" />
+							<p>奥运会首赢林丹 李宗伟释放跪ddddd</p>
+							<a href="#">播放</a>
+						</div>
+						
+					</li>
+					<li>
+						<span>5</span>
+						<a href="#">湖南两官员嫖宿少女 涉11名未qqqqq</a>
+						<div>
+							<img src="img/3.jpg" />
+							<p>湖南两官员嫖宿少女 涉11名未qqqqq</p>
+							<a href="#">播放</a>
+						</div>
+						
+					</li>
+					
+				</ul>
+			</div>
+			
+			<span>更多>></span>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body,h3,p,a,span{margin: 0;padding: 0;}
+			body{font: 14px/30px "微软雅黑";text-align: center;}
+			#no-cycle{}
+			#cycle{}
+			#box{position: relative;left: 50%;margin-left:-160px;top: 20px;height: 300px;width: 300px;border: 10px solid saddlebrown;background: #f1f1f1;color:#fff}
+			a{color: #fff;text-decoration: none;opacity: 0.8;width: 40px;top: 150px;position: absolute;height: 30px;background: #000;}
+			a:hover{ filter:alpha(opacity:30);opacity: 0.3;}
+			#h3{font: 16px/30px "微软雅黑";text-align: center;}
+			#imgNum,#imgInfo{position: absolute;height: 30px;background: #000;opacity: 0.3;}
+			#imgNum{top: 0;left: 0;width: 300px;}
+			#imgInfo{bottom: 0;left: 0;width: 300px;}
+			#prev{left: 10px;}
+			#next{right: 10px;}
+			#pic{top: 0;left: 0;height: 300px;width: 300px;}
+		</style>
+		<script>
+			window.onload = function(){
+				var arr1 = ['img/1.jpg','img/2.jpg','img/3.jpg','img/4.jpg',]
+				var arr2 = ['Pic1','Pic2','Pic3','Pic4',]
+				var oBtn = document.getElementsByTagName('input');
+				var oH3 = document.getElementById('h3');
+				var oImgNum = document.getElementById('imgNum');
+				var oPrev = document.getElementById('prev');
+				var oNext = document.getElementById('next');
+				var oImgInfo = document.getElementById('imgInfo');
+				var oPic = document.getElementById('pic');
+				var num = 0;
+				oBtn[0].onclick = function(){
+					oH3.innerHTML = '切换模式为顺序切换';
+					Nocycle();
+				}
+				oBtn[1].onclick = function(){
+					oH3.innerHTML = '切换模式为循环切换';
+					Cycle();
+				}
+				function Tab(){
+					oImgNum.innerHTML = num+1 +' / ' + arr1.length;
+					oImgInfo.innerHTML = arr2[num];
+					oPic.src = arr1[num];
+				}
+				Tab();
+				function Nocycle(){
+					oPrev.onclick = function(){
+						num--;
+						if(num == -1){
+							num = 0;
+						}
+						Tab();
+					}
+					oNext.onclick = function(){
+						num++;
+						if(num > arr1.length-1){
+							num = arr1.length-1;
+						}
+						Tab();
+					}
+				}
+				function Cycle(){
+					oPrev.onclick = function(){
+						num--;
+						if(num == -1){
+							num = 3;
+						}
+						Tab();
+					}
+					oNext.onclick = function(){
+						num++;
+						if(num > arr1.length-1){
+							num = 0;
+						}
+						Tab();
+					}
+				}
+			}
+				
+		</script>
+	</head>
+	<body>
+		<input type="button" value="顺序切换" id="no-cycle" />
+		<input type="button" value="循环切换" id="cycle" />
+		<h3 id="h3">请选择切换模式</h3>
+		<div id="box">			
+			<span id="imgNum">正在加载。。。</span>
+			<a href="javascript:;" id="prev"><</a>
+			<a href="javascript:;" id="next">></a>
+			<p id="imgInfo">正在加载。。。</p>
+			<img id="pic" />
+		</div>
+	</body>
+</html>

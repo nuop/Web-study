@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		body,ul,div,a,h2{margin: 0;padding: 0;}
+		li{list-style: none;}
+		.wrap{position: relative;width: 100%;height: 100%;}
+		#wr{position: absolute;width: 100%;height: 720px;}
+		h2{font: 30px "微软雅黑";}
+		.btns{height: 50px;width: 100px;background: #ccc;text-align: center;position: absolute;left: 400px;top: 0;}
+		#box{height: 200px;width: 100px;background: #000}
+		#setclass{width: 300px;height: 200px; border: 20px solid #ccc;position: absolute;top: 50%;left: 50%;margin-left: -170px;padding: 10px;display: none;top: 100px;background: #fff;}
+		#setclass div{height: 50px;}
+		#setclass span{font: 18px/50px "微软雅黑";float: left;}
+		#setclass li{float: left; height: 30px;width: 50px; margin-top: 10px; line-height: 30px;margin-left: 5px;text-align: center;}
+		#setclass li:hover{border: 1px solid #000; background:green}
+		.setcolor li:nth-of-type(1){background: red;}
+		.setcolor li:nth-of-type(2){background: yellow;}
+		.setcolor li:nth-of-type(3){background: blue;}
+		.btnGroup{width: 100px;margin: 10px auto;}
+		.shadow{height: 100%;width: 100%}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oWrap = document.getElementById('wr');
+			var oBtns = document.getElementById('btns');
+			var oBtn1 = document.getElementById('btn1');
+			var oBtn2 = document.getElementById('btn2');
+			var oDiv = document.getElementById('setclass');
+			var oDiv1 = document.getElementById('box');
+			var oRed = document.getElementById('red');
+			var oYellow = document.getElementById('yellow');
+			var oBlue = document.getElementById('blue');
+			var oW200 = document.getElementById('w200');
+			var oW300 = document.getElementById('w300');
+			var oW400 = document.getElementById('w400');
+			var oH200 = document.getElementById('h200');
+			var oH300 = document.getElementById('h300');
+			var oH400 = document.getElementById('h400');
+			oBtns.onclick = function(){
+				if(oDiv.style.display == 'block'){
+					oDiv.style.display = 'none';
+					oDiv.style.display = '';
+					oWrap.style.background = '';
+					oWrap.style.opacity = '';
+				}
+				else{
+					oDiv.style.display = 'block';
+					oWrap.style.background = '#000';
+					oWrap.style.opacity = '0.5';
+				}				
+			}
+			oBtn1.onclick = function(){
+				oDiv.style.display = 'none';
+				oDiv.style.display = '';
+					oWrap.style.background = '';
+					oWrap.style.opacity = '';
+			}
+			oBtn2.onclick = function(){
+				oDiv.style.display = 'none';
+				oDiv1.style.background = '#000';
+				oDiv1.style.width = '100'+'px';
+				oDiv1.style.height = '200'+'px';
+				oDiv.style.display = '';
+					oWrap.style.background = '';
+					oWrap.style.opacity = '';
+
+			}
+			oRed.onclick = function(){
+				oDiv1.style.background = 'red';
+			}
+			oYellow.onclick = function(){
+				oDiv1.style.background = 'yellow';
+			}
+			oBlue.onclick = function(){
+				oDiv1.style.background = 'blue';
+			}
+			oW200.onclick = function(){
+				oDiv1.style.width = '200'+'px';
+			}
+			oW300.onclick = function(){
+				oDiv1.style.width = '300'+'px';
+			}
+			oW400.onclick = function(){
+				oDiv1.style.width = '400'+'px';
+			}
+			oH200.onclick = function(){
+				oDiv1.style.height = '200'+'px';
+			}
+			oH300.onclick = function(){
+				oDiv1.style.height = '300'+'px';
+			}
+			oH400.onclick = function(){
+				oDiv1.style.height = '400'+'px';
+			}
+		}
+	</script>
+</head>
+<body>
+<div class="wrap">
+	<div id="wr"></div>
+	<h2>点击修改下面方框的样式:</h2>
+	<input type="button" name="btns" id="btns" class="btns" value="修改样式">
+	<div id="box"></div>
+	<div class="shadow"></div>
+	<div id="setclass">
+		<div class="setcolor">
+			<span>请选择背景色:</span>
+			<ul>
+				<li id="red">红</li>
+				<li id="yellow">黄</li>
+				<li id="blue">蓝</li>
+			</ul>
+		</div>
+		<div class="setwidth">
+			<span>请选择宽度px:</span>
+			<ul>
+				<li id="w200">200</li>
+				<li id="w300">300</li>
+				<li id="w400">400</li>
+			</ul>
+		</div class="setheight">
+		<div>
+			<span>请选择高度px:</span>
+			<ul>
+				<li id="h200">200</li>
+				<li id="h300">300</li>
+				<li id="h400">400</li>
+			</ul>
+		</div>
+		<div class="btnGroup">
+			<input type="button" name="" id="btn1" class="btn1" value="确认">
+			<input type="button" name="" id="btn2" class="btn2" value="取消">
+		</div>
+				
+	</div>
+</div>
+	
+</body>
+</html>

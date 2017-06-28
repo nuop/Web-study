@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body,h3,ul,li{margin: 0;padding: 0;}
+			li{list-style: none;}
+			#box{width: 200px;margin: 0 auto;}
+			h3{height: 30px;font:20px/30px "微软雅黑";color: #000;text-indent: 20px;background: url(img/ico1.gif) no-repeat 5px center;background-color: greenyellow;}
+			.active1{background: url(img/ico2.gif) no-repeat 5px center;background-color: yellow;}
+			#list ul{display: none;}
+			#list ul li{text-indent: 25px;height: 20px;}
+			.active2{background: blueviolet;}
+		</style>
+		<script>
+			window.onload = function(){
+				var oUl = document.getElementById('list');
+				var aH3 = oUl.getElementsByTagName('h3');
+				var aUl = oUl.getElementsByTagName('ul');
+				var aLi = null;
+				var arryLi = [];
+
+				for(var i=0;i<aUl.length;i++){   //
+					aLi = aUl[i].getElementsByTagName('li');
+					 for(var j=0;j<aLi.length;j++){
+					 	arryLi.push(aLi[j]);
+					 	
+					 }
+				}
+				for(var i=0;i<arryLi.length;i++){
+					arryLi[i].onclick = function(){
+						for(var i=0;i<arryLi.length;i++){
+							if( arryLi[i] != this ){
+								arryLi[i].className = '';
+							}
+
+						}
+						if(this.className == ''){
+							this.className = 'active2';
+						}else{
+							this.className = '';
+						}
+						
+					}
+				}
+				
+				for(var i=0;i<aH3.length;i++){
+					aH3[i].index = i;				
+					aH3[i].onclick =function(){
+						for(var i=0;i<aH3.length;i++){
+							if(aH3[i]!=this){
+								aH3[i].className = '';
+								aUl[i].style.display = 'none';
+							}
+							
+						}
+						if(this.className == ''){
+							this.className = 'active1';
+							aUl[this.index].style.display = 'block';
+						}else{
+							aUl[this.index].style.display = 'none';
+							this.className = '';
+						}						
+					}
+				}
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<ul id="list">
+				<li>
+					<h3>我的同学</h3>
+					<ul>
+						<li>111</li>
+						<li>111</li>
+						<li>111</li>
+						<li>111</li>
+					</ul>
+				</li>
+				<li>
+					<h3>我的朋友</h3>
+					<ul>
+						<li>222</li>
+						<li>222</li>
+						<li>222</li>
+						<li>222</li>
+					</ul>
+				</li>
+				<li>
+					<h3>黑名单</h3>
+					<ul>
+						<li>333</li>
+						<li>333</li>
+						<li>333</li>
+						<li>333</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>

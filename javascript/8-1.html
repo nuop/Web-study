@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>定时器应用</title>
+		<style>
+		li{list-style: none;display: inline-block;}
+			#nav{
+				height: 20px;
+			}
+			#nav li{width: 50px;height: 20px;}
+			#navInfo{height: 20px;margin-top: 6px;}
+			#navInfo li{width: 60px;height: 20px;display: none;}
+		</style>
+		<script>
+			window.onload = function(){
+				var oUl1 =document.getElementById('nav');
+				var navLi =oUl1.getElementsByTagName('li');
+				var oul2 = document.getElementById('navInfo');
+				var infoLi =oul2.getElementsByTagName('li');
+				var aColor = ['red','yellow','blue','black']
+				var timer = null;
+				function hide(){
+					b = this.index
+					timer = setTimeout(function(){
+							infoLi[b].style.display = 'none';
+						},400)
+				}
+				function show(){
+					for(var i=0;i<infoLi.length;i++){
+						infoLi[i].style.display = 'none';
+					}
+					infoLi[this.index].style.display = 'inline-block';
+				}
+				for(var i=0;i<navLi.length;i++){
+					navLi[i].index = i;
+					infoLi[i].index = i;
+					navLi[i].style.background = aColor[i];
+					infoLi[i].style.background = aColor[i];
+					navLi[i].onmouseover = show;
+					navLi[i].onmouseout = hide;
+					infoLi[i].onmouseover = function(){
+						clearInterval(timer);
+						this.style.display = 'inline-block';
+					}
+					infoLi[i].onmouseout = hide;
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<ul id="nav">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<ul id="navInfo">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</body>
+</html>
