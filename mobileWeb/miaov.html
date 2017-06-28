@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+	<title>miaov</title>
+	<script>
+		(function(){
+			var html = document.documentElement;
+			var hWidth = html.getBoundingClientRect().width;
+			html.style.fontSize = hWidth/16 + 'px';
+		})()
+	</script>
+	
+</head>
+<body>
+	<header id="header">
+		<a href="javascript:;" class="task"><span class="glyphicon glyphicon-tasks"></span></a>
+		<h1><span class="glyphicon glyphicon-lock"></span>miaov</h1>
+		<a href="javascript:;" class="refresh"><span class="glyphicon glyphicon-refresh"></span></a>
+	</header>
+	<nav id="nav">
+		<a href="javascript:;" class="active">综合<span class="active glyphicon glyphicon-chevron-down"></span></a>
+		<a href="javascript:;">销量<span></span></a>
+		<a href="javascript:;">价格<span class="spanBox">
+			<span class="glyphicon glyphicon-chevron-up"></span>
+			<span class="glyphicon glyphicon-chevron-down active"></span>
+		</span></a>
+		<a href="javascript:;">筛选<span class="glyphicon glyphicon-filter"></span></a>
+	</nav>
+	<section id="wrap">
+		<ul class="list">
+			<li>
+				<a href="javascript:;">
+					<img src="img/img.png">
+					<div>
+						<p>苹果（Apple）iPhone 6(A1586) 16GB 金色 移动联通电信4G手机</p>
+						<strong>￥4888.00</strong>
+						<span>好评96% 59091人</span>
+					</div>
+				</a>
+			</li>
+		</ul>
+	</section>
+</body>
+</html>

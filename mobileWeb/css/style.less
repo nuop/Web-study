@@ -1,0 +1,145 @@
+@r:50rem;
+a,input,button{
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);    /* 阴影 */
+}
+input,button{
+	-webkit-appearance: none;   /*  ios圆角 */
+	border-radius: 0;
+}
+body{
+	margin: 0;
+	-webkit-user-select: none;   /* 文字选中 */
+}
+h1,ul,li{
+	margin: 0;padding: 0;
+}
+a{
+	text-decoration: none;
+}
+body *{
+	-webkit-user-select: none;
+	font-family: Helvetica; 
+}
+body {
+	-webkit-text-size-adjust: 100%;  /* 横竖屏切换文字大小 */
+}
+li{
+	list-style: none;
+}
+#header{
+	height: 103/@r;
+	background-color: #ef3239;
+	position: relative;
+	border-bottom: 1px solid #a82d31;
+	box-sizing: border-box;
+	a{
+		width: 128/@r;
+		height: 88/@r;
+		line-height: 88/@r;
+		position: absolute;
+		top: 0;
+		text-align: center;
+	}
+	.task{
+		left: 0;
+		span{
+			font-size: 37/@r;
+		}
+	}
+	.refresh{
+		right: 0;
+		span{
+			font-size: 36/@r;
+		}
+	}
+	span{
+		color: #fff;
+	}
+	h1{
+		text-align: center;
+		font-size: 39/@r;
+		color: #fff;
+		line-height: 88/@r;
+		span{
+			font-size: 26/@r;
+			margin-right: 16/@r;
+		}
+	}
+}
+.active{
+	color: #f23838 !important;
+}
+#nav{
+	height: 105/@r;
+	background-color: #fdfdfd;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	box-sizing: border-box;
+	.active{
+		font-size: 36/@r;
+	}
+	a{
+		float: left;
+		width: 25%;
+		height: 103/@r;
+		line-height: 103/@r;
+		font-size: 35/@r;
+		text-align: center;
+		color: #848689;
+	}
+	.spanBox{
+		width: 37/@r;
+		display: inline-block;
+		vertical-align: middle;
+		span{
+			float: left;
+			font-size: 26/@r;
+			left: 5/@r;
+		}
+		.glyphicon-chevron-down{
+			left: 2/@r;
+			top: -4/@r;
+		}
+
+	}
+	.glyphicon-filter{
+		font-size: 37/@r;
+		top:6/@r;
+	}
+}
+#wrap{
+	.list{
+		li{
+			height:281/@r;
+			border-bottom: 1px solid #e0e0e0;
+		}
+		a{
+			padding: 23/@r 22/@r;
+			height: 235/@r;
+			display: block;
+		}
+		img{
+			width: 235/@r;
+			height: 235/@r;
+			float: left;
+		}
+		div{
+			float: left;
+			width: 432/@r;
+			p{
+				font-size: 28/@r;
+				line-height: 44/@r;
+				color: #333;
+				margin-top: 5/@r;
+			}
+			strong{
+				color: #ef3239;
+			}
+			span{
+				display: block;
+				font-size: 28/@r;
+				line-height: 47/@r;
+			}
+		}
+	}
+}

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no">
+	<title>移动端轮播图</title>
+	<script>
+		var html = document.documentElement;
+		var hWidth = html.getBoundingClientRect().width;
+		html.style.fontSize = hWidth / 15 +'px';
+		//阻止pc和浏览器默认行为。
+		document.addEventListener('touchstart',function(ev){
+			ev.preventDefault();
+		});
+	</script>
+	<style>
+		body,ul,li,a{
+			margin: 0;padding: 0;
+		}
+		li{
+			list-style: none;
+		}
+		#banner{
+			position: relative;
+			height: 15rem;
+			width: 100%;
+			overflow: hidden;
+		}
+		.picList{
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 400%;
+		}
+		.picList li{
+			float: left;
+			width: 15rem;
+			height: 15rem;
+		}
+		.picList li img{
+			width: 15rem;
+			height: 15rem;
+		}
+		.dotList{
+			position: absolute;
+			bottom: .5rem;
+			left: 50%;
+			width: 5rem;
+			margin-left: -2.5rem;
+			display: flex;
+			display: -webkit-box;
+			justify-content: space-between;
+			-webkit-box-pack: justify;			
+		}
+		.dotList a{
+			display: block;
+			text-align: center;
+			width: 0.8rem;
+			height: 0.8rem;
+			border: 1px solid #ccc;
+			border-radius: 50%;
+			background-color: #ccc;
+			box-sizing: border-box;		
+		}
+		.active{
+			background-color: #333 !important;
+		}
+	</style>
+</head>
+<body>
+	<div id="banner">
+		<ul class="picList">
+			<li>
+				<img src="img/1.jpg" alt="">
+			</li>
+			<li>
+				<img src="img/2.jpg" alt="">
+			</li>
+			<li>
+				<img src="img/3.jpg" alt="">
+			</li>
+			<li>
+				<img src="img/4.jpg" alt="">
+			</li>
+		</ul>
+		<nav class="dotList">
+			<a href="javascript:;" class="active"></a>
+			<a href="javascript:;"></a>
+			<a href="javascript:;"></a>
+			<a href="javascript:;"></a>
+		</nav>
+	</div>
+	<script>
+		var oBanner = document.querySelector('#banner'),
+			oList = document.querySelector('.picList'),
+			a = document.querySelectorAll('a'),
+			disX = 0, //按下的坐标
+			listL = 0,//当前按下list的left值
+			w = oBanner.clientWidth;
+		var len = 0;
+		var  n=0; //默认第一个小点为黑
+		oList.innerHTML += oList.innerHTML;
+		len = oList.children.length;
+		oList.style.width = len*w +'px';
+		oList.addEventListener('touchstart', start);
+		oList.addEventListener('touchmove', move);
+		oList.addEventListener('touchend', end);
+
+		function start(ev){
+			var e = ev.changedTouches[0];
+			disX = e.pageX;
+			oList.style.transition = 'none';
+			var num = Math.round(oList.offsetLeft / w) ;
+			if(num == 0){
+				num = a.length;
+				oList.style.left = -num * w + 'px';
+			}
+			if(-num == len-1){
+				num = a.length-1
+				oList.style.left = -num * w + 'px';
+			}
+			
+			listL = this.offsetLeft;
+		}
+		function move(ev){
+			var e = ev.changedTouches[0];
+			oList.style.left = (e.pageX - disX) + listL +'px';
+		}
+		function end(){
+			var num = Math.round(oList.offsetLeft / w) ;
+			oList.style.transition = '.5s';
+			oList.style.left = num*w + 'px';
+			a[n].className = '';
+			a[-num%a.length].className = 'active';
+			n = -num%a.length;
+		}
+	</script>
+</body>
+</html>
