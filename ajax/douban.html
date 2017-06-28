@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#q{height: 30px;width: 300px;padding: 4px;border: 1px solid #333}
+		dl{border-top: 1px solid #333}
+		ul{overflow: hidden}
+		li{list-style: none;float: left;}
+		span{display: none}
+	</style>
+	<script>
+		function fn1(data){
+			var oMsg = document.getElementById('msg');
+			var oList = document.getElementById('list');		
+			var oUl = document.getElementById('ul1');
+			var oSpan1 = document.getElementById('s1');
+			var oSpan2 = document.getElementById('s2');
+			oSpan1.style.display = 'inline-block';		
+			oSpan2.style.display = 'inline-block';		
+			console.log(data);
+			oMsg.innerHTML = data.title.$t + data['opensearch:totalResults'].$t;
+			var total = data['opensearch:totalResults'].$t;
+			var page = '';
+			for(var i=1;i<=Math.ceil(total/10);i++){
+				page += '<li>'+i+'</li>';
+			}
+			oUl.innerHTML = page;
+			var aEntry = data.entry;
+			var html = '';
+			for(var i=0;i<aEntry.length;i++){
+				html += '<dl><dt>'+aEntry[i].title.$t+'</dt><dd><img src="'+aEntry[i].link[2]['@href']+'"></dd></dl>'
+			}
+			oList.innerHTML = html;
+		}
+	</script>
+	<script>
+		window.onload = function(){
+			var oQ = document.getElementById('q');
+			var oBtn = document.getElementById('btn');
+			var oMsg = document.getElementById('msg');
+			var oList = document.getElementById('list');
+			var oSpan1 = document.getElementById('s1');
+			var oSpan2 = document.getElementById('s2');
+			var ipage = 1;
+			oSpan1.onclick = function(){
+				
+				if(ipage > 1){
+					ipage--;
+				}
+				getList(ipage);
+			}
+			oSpan2.onclick = function(){
+				if(ipage > 0){
+					ipage++;
+				}
+				getList(ipage);
+			}
+			oBtn.onclick = function(){
+				getList(ipage);
+			}
+			
+			function getList(num){
+				if(oQ.value){
+					var oScript = document.createElement('script');
+					oScript.src = 'http://api.douban.com/book/subjects?q='+oQ.value+'&alt=xd&callback=fn1&start-index='+num*10;
+					document.body.appendChild(oScript);
+				} 
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="text" name="" id="q"><input type="button" name="" id="btn" value="搜索">
+	<p id="msg"></p>
+	<ul id="ul1"></ul>
+	<span id="s1">上一页</span>
+	<span id="s2">下一页</span>
+	<hr/>
+	<div id="list">
+		
+	</div>
+	
+
+</body>
+</html>

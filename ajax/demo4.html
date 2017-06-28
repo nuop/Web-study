@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>瀑布流</title>
+	<style>
+		body{padding: 0;margin: 0}
+		#ul1{width: 100%;min-width: 1000px;margin-left: 50px}
+		li{width: 272px;float: left;margin-right: 20px;list-style: none;}
+		li div{border: 1px solid #333;padding: 10px;margin-top: 10px}
+		li div img{display: block;}
+		li div p{text-align: center;}
+	</style>
+	<script type="text/javascript" src="ajax_app.js"></script>
+	<script>
+		window.onload = function(){
+			var oUl1 = document.getElementById('ul1');
+			var aLi = oUl1.getElementsByTagName('li');
+			var ilen = aLi.length;
+			var iPage = 1;
+			var ikey = true;
+			getList();
+			function getList(){	
+				ajax('get','getPics.php','cpage='+iPage,function(data){
+					var data = JSON.parse(data);
+					if( !data.length ){
+						return;
+					}
+
+					for(var i=0;i<data.length;i++){
+						var minLi = getMinLi();
+						var oDiv = document.createElement('div');
+						var oImg= document.createElement('img');
+						oImg.src = data[i].preview;
+						oImg.style.width = '250px';
+						oImg.style.height = data[i].height* (250/data[i].width) + 'px';
+						oDiv.appendChild( oImg );
+						var oP = document.createElement('p');
+						oP.innerHTML = data[i].title;
+						oDiv.appendChild( oP );
+						aLi[minLi].appendChild( oDiv );
+					}
+					ikey = true;
+				});
+			};
+			
+			window.onscroll = function(){
+				var _index = getMinLi();
+				var oLi = aLi[_index];
+				var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+				if( getTop(oLi) + oLi.offsetHeight < document.documentElement.clientHeight + scrollTop ){
+					if( ikey ){
+						ikey = false;
+						iPage++;
+						getList();
+					}	
+				}
+			};
+			function getMinLi(){
+				var index = 0;
+				var iH = aLi[index].offsetHeight;
+				for(var i=1;i<ilen;i++){
+					if(aLi[i].offsetHeight < iH){
+						index = i;
+						iH = aLi[i].offsetHeight;
+					}
+				}
+				return index;
+			};
+			function getTop(obj){
+				var iTop = 0;
+				while(obj){
+					iTop += obj.offsetTop;
+					obj = obj.offsetParent;
+				}
+				return iTop;
+			};
+		}	
+	</script>
+</head>
+<body>
+	<ul id="ul1">
+		<li>
+			
+		</li>
+		<li>
+			
+		</li>
+		<li>
+			
+		</li>
+		<li>
+			
+		</li>
+	</ul>
+</body>
+</html>

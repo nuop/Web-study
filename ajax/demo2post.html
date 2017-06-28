@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form method="post">
+		<input type="txt" name="username">
+		<input type="submit" value="提交" id="btn1">
+	</form>
+	<script>
+	// 阻塞：同步 非阻塞：异步
+		var oBtn =document.getElementById('btn1');
+		oBtn.onclick = function(){
+			var xhr=null;
+			try {
+				xhr = new XMLHttpRequest();
+			} catch(e) {
+				// statements
+				xhr = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xhr.open('post','1.php',true);
+			//post方式 数据放在send中传输
+			xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');//申明发送的数据类型
+			xhr.send('username=123dd');
+			// responseText:ajax请求返回的内容被存放在这个属性下面
+			xhr.onreadystatechange = function(){
+				if(xhr.readyState == 4){
+					if(xhr.status == 200){
+						alert(xhr.responseText);
+					}else{
+						alert('出错，错误代码Error：'+xhr.status);
+					}				
+				}
+			}
+		}
+	</script>
+</body>
+</html>
